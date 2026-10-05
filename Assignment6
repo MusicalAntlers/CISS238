@@ -1,0 +1,78 @@
+/** Assignment 6: Simulating a car's miles per gallon for a trip
+ * Course: CISS238
+ * Student: Morgan Williams
+ * Date: September 9, 2026
+ */
+package edu.ccis;
+
+public class Trip {
+	// fields
+	private double milesDriven;
+	private double gasolineUsed;
+	// accessors/getter
+	public double getMilesDriven() {
+		return milesDriven;
+	}
+	public double getGasolineUsed() {
+		return gasolineUsed;
+	}
+	// mutators/setter
+	public void setMilesDriven(double milesDriven) {
+		this.milesDriven = milesDriven;
+	}
+	public void setGasolineUsed(double gasolineUsed) {
+		this.gasolineUsed = gasolineUsed;
+	}
+	// constructor
+	public Trip(double milesDriven, double gasolineUsed) {
+		this.milesDriven = milesDriven;
+		this.gasolineUsed = gasolineUsed;
+	}
+	// method
+	public double getMilesPerGallon() {
+		double mpg = 0.0;
+		mpg = milesDriven / gasolineUsed;
+		return mpg;
+	}
+	// toString method
+	@Override
+	public String toString() {
+		String str;
+		str = String.format("Miles driven: %.2f%nGasoline Used: "
+							+ "%.2f%nMiles Per Gallon: %.2f",
+		getMilesDriven(), getGasolineUsed(), getMilesPerGallon());
+		return str;
+	}
+
+}
+
+
+/** Assignment 6: Simulating a car's miles per gallon for a trip
+ * Course: CISS238
+ * Student: Morgan Williams
+ * Date: September 9, 2026
+ */
+package edu.ccis;
+import java.util.Scanner;
+
+public class TripTest {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		// local variables to hold user input
+		double milesDriven = 0.0;
+		double gasolineUsed = 0.0;
+		// prompt the user for input
+		System.out.println("Enter miles driven: ");
+		milesDriven = input.nextDouble();
+		System.out.println("Enter gasoline used: ");
+		gasolineUsed = input.nextDouble();
+		// create an object
+		Trip trip = new Trip(milesDriven, gasolineUsed);
+		// display output
+		System.out.println(trip);
+		input.close();
+
+	}
+
+}
