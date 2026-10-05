@@ -1,0 +1,76 @@
+/** Assignment 7: Returning the largest of 3 numbers
+ * Student: Morgan Williams
+ * Date: September 9, 2026
+ */
+package edu.ccis;
+
+public class RetailTax {
+	// fields
+	private double salesAmount;
+	private double taxRate;
+	// accessors/getters
+	public double getSalesAmount() {
+		return salesAmount;
+	}
+	public double getTaxRate() {
+		return taxRate;
+	}
+	// mutators/setters
+	public void setSalesAmount(double salesAmount) {
+		this.salesAmount = salesAmount;
+	}
+	public void setTaxRate(double taxRate) {
+		this.taxRate = taxRate;
+	}
+	//constructor
+	public RetailTax(double salesAmount, double taxRate) {
+		this.salesAmount = salesAmount;
+		this.taxRate = taxRate;
+	}
+	// method
+	public double getTaxAmount() {
+		return salesAmount * taxRate / 100;
+	}
+	public double getTotalAmount() {
+		return salesAmount + getTaxAmount();
+	}
+	// toString
+	@Override
+	public String toString() {
+		String str;
+		str = String.format("Subtotal: %.2f%nTax: "
+							+ "%.2f%nTotal: %.2f",
+		getSalesAmount(), getTaxRate(), getTotalAmount());
+		return str;
+	}
+}
+
+
+
+/** Assignment 7: Returning the largest of 3 numbers
+ * Student: Morgan Williams
+ * Date: September 9, 2026
+ */
+package edu.ccis;
+import java.util.Scanner;
+
+public class RetailTaxTest {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		// declare three local variables
+		double salesAmount = 0;
+		double taxRate = 0;
+		// prompt the user for input
+		System.out.println("Enter sales amount: ");
+		salesAmount = input.nextDouble();
+		System.out.println("Enter tax rate: ");
+		taxRate = input.nextDouble();
+		// Create an object
+		RetailTax retailTax = new RetailTax(salesAmount, taxRate);
+		// display output
+		System.out.println(retailTax);
+		input.close();		
+	}
+
+}
