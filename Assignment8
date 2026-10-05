@@ -1,0 +1,91 @@
+/** Assignment 8: Finding if 3 numbers can be the 3 sides of a triangle
+ * Student: Morgan Williams
+ * Date: September 9, 2026
+ */
+package edu.ccis;
+
+public class Triangle {
+	// fields
+		private int side1;
+		private int side2;
+		private int side3;
+		// accessors/getters
+		public int getSide1() {
+			return side1;
+		}
+		public int getSide2() {
+			return side2;
+		}
+		public int getSide3() {
+			return side3;
+		}
+		// mutators/setters
+		public void setSide1(int side1) {
+			this.side1 = side1;
+		}
+		public void setSide2(int side2) {
+			this.side2 = side2;
+		}
+		public void setSide3(int side3) {
+			this.side3 = side3;
+		}
+		//constructor
+		public Triangle(int side1, int side2, int side3) {
+			this.side1 = side1;
+			this.side2 = side2;
+			this.side3 = side3;
+		}
+		// method
+		public boolean isTriangle() {
+			boolean triangle = false;
+			if(getSide1() + getSide2() > getSide3()
+			&& getSide2() + getSide3() > getSide1()
+			&& getSide3() + getSide1() > getSide2()) {
+				triangle = true;
+			}
+			return triangle;
+		}
+		// toString
+		@Override
+		public String toString() {
+			String str;
+			str = String.format("%d, %d, and %d %s",
+			getSide1(), getSide2(), getSide3(),
+			isTriangle()?
+					"can make three side of a triangle."
+					: "cannot make thee sides of a triangle.");
+			return str;
+		}
+
+}
+
+
+
+/** Assignment 8: Finding if 3 numbers can be the 3 sides of a triangle
+ * Student: Morgan Williams
+ * Date: September 9, 2026
+ */
+package edu.ccis;
+import java.util.Scanner;
+
+public class TriangleTest {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		// declare three variables
+		int side1=0; int side2=0; int side3=0;
+		// prompt the user for input
+		System.out.println("Enter length for side 1: ");
+		side1 = input.nextInt();
+		System.out.println("Enter length for side 2: ");
+		side2 = input.nextInt();
+		System.out.println("Enter length for side 3: ");
+		side3 = input.nextInt();
+		// create an object of the Triangle class
+		Triangle triangle = new Triangle(side1, side2, side3);
+		//display
+		System.out.println(triangle);
+		input.close();
+	}
+
+}
