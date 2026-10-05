@@ -1,0 +1,108 @@
+/** Assignment 12: Creating time objects
+ * Student: Morgan Williams
+ * Date: September 28, 2026
+ */
+package edu.ccis;
+
+public class Time2 {
+	// fields
+		private int hour; // 1 - 24
+		private int minute; // 0 - 59
+		private int second; // 0 - 59
+		// accessors
+		public int getHour() {
+			return hour;
+		}
+		public int getMinute() {
+			return minute;
+		}
+		public int getSecond() {
+			return second;
+		}
+		// mutators
+		public void setTime(int hour, int minute, int second) {
+			setHour(hour);
+			setMinute(minute);
+			setSecond(second);
+		}
+		public void setHour(int hour) {
+			if (hour < 1 || hour > 24) {
+				throw new IllegalArgumentException("Hour must be between 1-24");
+			}
+			this.hour = hour;
+		}
+		public void setMinute(int minute) {
+			if (minute < 0 || minute > 59) {
+				throw new IllegalArgumentException("Minute must be between 0-59");
+			}
+			this.minute = minute;
+		}
+		public void setSecond(int second) {
+			if (second < 0 || second > 59) {
+				throw new IllegalArgumentException("Second must be between 0-59");
+			}
+			this.second = second;
+		}
+		
+		// constructors
+		public Time2() {
+			hour = 01;
+			minute = 01;
+			second = 01;
+		}
+		public Time2(int hour, int minute, int second) {
+			this.hour = hour;
+			this.minute = minute;
+			this.second = second;
+		}
+		public Time2(int hour) {
+			this(hour, 0, 0);
+		}
+		public Time2(int hour, int minute) {
+			this(hour, minute, 0);
+		}
+		public Time2(Time2 time2) {
+			this(time2.getHour(), time2.getMinute(), time2.getSecond());
+		}
+		public String militaryTime() {
+			return String.format("%02d:%02d:%02d", hour, minute, second);
+		}
+		public String standardTime() {
+			int displayHour = (hour % 12 == 0) ? 12 : hour % 12;
+			String amPm = (hour >= 12 && hour < 24) ? "PM" : "AM";
+			return String.format("%02d:%02d:%02d %s", displayHour, minute, second, amPm);
+		}
+		
+	
+}
+
+
+/** Assignment 12: Creating date objects
+ * Student: Morgan Williams
+ * Date: September 28, 2026
+ */
+package edu.ccis;
+
+public class Time2Test {
+
+	public static void main(String[] args) {
+		// 5 objects
+		Time2 time2a = new Time2();
+		Time2 time2b = new Time2(14, 23, 12);
+		Time2 time2c = new Time2(3);
+		Time2 time2d = new Time2(3, 25);
+		Time2 time2e = new Time2(time2b);
+		// display each object in 2 formats
+		System.out.println(time2a.militaryTime());
+		System.out.println(time2a.standardTime());
+		System.out.println(time2b.militaryTime());
+		System.out.println(time2b.standardTime());
+		System.out.println(time2c.militaryTime());
+		System.out.println(time2c.standardTime());
+		System.out.println(time2d.militaryTime());
+		System.out.println(time2d.standardTime());
+		System.out.println(time2e.militaryTime());
+		System.out.println(time2e.standardTime());
+	}
+
+}
