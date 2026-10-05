@@ -1,0 +1,102 @@
+package edu.ccis;
+
+public class Student {
+	// fields
+	private String name;
+	private int score;
+	private static int bonus;
+	private static int numberOfStudents;
+	
+	// accessors
+	public String getName() {
+		return name;
+	}
+	public int getScore() {
+		return score;
+	}
+	public int getBonus() {
+		return bonus;
+	}
+	public int getNumberOfStudents() {
+		return numberOfStudents;
+	}
+	
+	// mutators
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public void setBonus(int bonus) {
+		Student.bonus = bonus;
+	}
+	
+	// constructor
+	public Student(String name, int score) {
+		this.name = name;
+		this.score = score;
+		numberOfStudents++;
+	}
+	
+	// toString
+	@Override
+	public String toString() {
+		String str;
+		str = String.format("Name: %s%nScore: %d%nCurved score: %d%n"
+							+ "Total student: %d%n",
+						getName(), getScore(), getScore()+getBonus(),
+						getNumberOfStudents());
+		return str;
+	}
+
+}
+
+
+package edu.ccis;
+import java.util.Scanner;
+
+public class StudentTest {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		// variables
+		int numberOfStudents = 0;
+		String name;
+		int score;
+		int bonus;
+		
+		// prompt user for number of students
+		System.out.println("Enter number of students: ");
+		numberOfStudents = input.nextInt();
+		// create an array
+		Student[] students = new Student[numberOfStudents];
+		// use a loop for student data
+		for(int i = 0; i < students.length; i++) {
+			// remove the enter key when the user enters the number above
+			input.nextLine();
+			// Prompt user to input the student(s) name. The loop increases by 1 each time
+			System.out.println("Enter student " + (i+1) + "'s name: ");
+			name = input.nextLine();
+			// Prompt user to input the student(s) score. The loop increases by 1 each time
+			System.out.println("Enter student " + (i+1) + "'s score: ");
+			score = input.nextInt();
+			// create the student
+			Student s = new Student(name, score);
+			// add the student to the array
+			students[i] = s;
+		}
+		// prompt for bonus if any
+		System.out.println("Enter bonus: ");
+		bonus = input.nextInt();
+		// set bonus for just one student
+		students[0].setBonus(bonus);
+		// display by using a shorthand for loop
+		for(Student s: students) {
+			System.out.println(s);
+		}
+		input.close();
+
+	}
+
+}
