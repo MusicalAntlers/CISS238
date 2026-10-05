@@ -1,0 +1,28 @@
+/** Assignment 2: Calculate Fahrenheit to Celsius
+ * Course: CCIS238
+ * Student: Morgan Williams
+ * Date: September 2, 2026
+ */
+package dropbox02;
+import java.util.Scanner;
+
+public class Chapter1Example3 {
+
+	public static void main(String[] args) {
+		// prompt user for today's temperature
+		System.out.println("Enter today's temperature in Fahrenheit:");
+		/* store user input in a variable
+		   but first we need a Scanner object */
+		Scanner input = new Scanner(System.in);
+		double tempInFahrenheit = input.nextDouble();
+		// convert the temperature from Fahrenheit to Celsius
+		double tempInCelsius = (tempInFahrenheit - 32) * 5/9;
+		// display
+		System.out.println("Temp(Fahrenheit): " + tempInFahrenheit);
+		System.out.println("Temp(Celsius: " + tempInCelsius);
+		// close the input object
+		input.close();
+
+	}
+
+}
