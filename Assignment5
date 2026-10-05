@@ -1,0 +1,39 @@
+/** Assignment 5: Determine class letter grade from numerical score
+ * Course: CISS238
+ * Student: Morgan Williams
+ * Date: September 2, 2026
+ */
+package edu.ccis;
+import java.util.Scanner;
+
+public class Chapter1Exercise4 {
+
+	public static void main(String[] args) {
+		// Prompt user to enter their name and integer between 0 and 100
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter you name: ");
+		String name = input.nextLine();
+		System.out.println("Enter your grade, as a whole number between 0 and 100: ");
+		int score = input.nextInt();
+		//Initialize grade to blank/zero
+		String grade = "";
+		
+		// if/else loop to output alpha grade from num score
+		if (score >= 90 && score <= 100) {
+			System.out.println("Congratulations, " + name + ". Your grade is A.");
+		} else if (score  <= 90 && score >= 80) {
+			System.out.println("Good job, " + name + ". Your grade is B.");
+		} else if (score <= 80 && score >= 70) {
+			System.out.println("Not bad, " + name + ". Your grade is C.");
+		} else if (score <= 70) {
+			System.out.println(name + ", you can do better.");
+		} else {
+			System.out.println("Invalid score entered.");
+			System.exit(0);
+		}
+		
+		input.close();
+
+	}
+
+}
