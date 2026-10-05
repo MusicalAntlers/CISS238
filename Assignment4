@@ -1,0 +1,40 @@
+/** Assignment 4: Determine class standing from credit hours
+ * Course: CISS238
+ * Student: Morgan Williams
+ * Date: September 2, 2026
+ */
+package edu.ccis;
+import java.util.Scanner;
+
+public class Chapter1Example4 {
+
+	public static void main(String[] args) {
+		// Ask user to enter name and the number of credit hours completed
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter your name: ");
+		String name = input.nextLine();
+		System.out.println("Enter the number of credit hours completed: ");
+		int creditHours = input.nextInt();
+		// Initialize grade to zero (or blank)
+		String grade = "";
+		
+		// If/else loop to determine the users grade based on the credit hours they input
+		if (creditHours >= 0 && creditHours <= 30) {
+			grade = "Freshman";
+		} else if (creditHours >= 30 && creditHours <= 60) {
+			grade = "Sophomore";
+		} else if (creditHours >= 60 && creditHours <= 90) {
+			grade = "Junior";
+		} else if (creditHours >= 91) {
+			grade = "Senior";
+		} else {
+			//Executes if an invalid (negative, decimal, etc) value was entered)
+			System.out.println("Invalid credit hours entered.");
+			System.exit(0);
+		}
+		//output the results based on the loop
+		System.out.println("Hi " + name + ", you are a " + grade + ".");
+		input.close();
+	}
+
+}
