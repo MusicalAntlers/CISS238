@@ -1,0 +1,94 @@
+/** Assignment 9: Finding if 3 numbers can be the 3 sides of a right triangle
+ * Student: Morgan Williams
+ * Date: September 9, 2026
+ */
+package edu.ccis;
+
+public class RightTriangle {
+	// fields
+			private int side1;
+			private int side2;
+			private int side3;
+			// accessors/getters
+			public int getSide1() {
+				return side1;
+			}
+			public int getSide2() {
+				return side2;
+			}
+			public int getSide3() {
+				return side3;
+			}
+			// mutators/setters
+			public void setSide1(int side1) {
+				this.side1 = side1;
+			}
+			public void setSide2(int side2) {
+				this.side2 = side2;
+			}
+			public void setSide3(int side3) {
+				this.side3 = side3;
+			}
+			//constructor
+			public RightTriangle(int side1, int side2, int side3) {
+				this.side1 = side1;
+				this.side2 = side2;
+				this.side3 = side3;
+			}
+			// method
+			public boolean isRightTriangle() {
+				boolean rightTriangle = false;
+				// Apply the Pythagorean theorum (a^2 + b^2 = c^2). Since we don't know the hypotenuse, we check all sides
+				int sq1 = side1 * side1;
+				int sq2 = side2 * side2;
+				int sq3 = side3 * side3;
+				
+				if((sq1 + sq2 == sq3) 
+				|| (sq1 + sq3 == sq2) 
+				|| (sq2 + sq3 == sq1)) {
+					rightTriangle = true;
+				}
+				
+				return (rightTriangle);
+			}
+			// toString
+			@Override
+			public String toString() {
+				String str;
+				str = String.format("%d, %d, and %d %s",
+				getSide1(), getSide2(), getSide3(),
+				isRightTriangle()?
+						"can make three side of a right triangle."
+						: "cannot make thee sides of a right triangle.");
+				return str;
+			}
+
+
+}
+
+
+package edu.ccis;
+import java.util.Scanner;
+
+public class RightTriangleTest {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		// declare three variables
+		int side1=0; int side2=0; int side3=0;
+		// prompt the user for input
+		System.out.println("Enter length for side 1: ");
+		side1 = input.nextInt();
+		System.out.println("Enter length for side 2: ");
+		side2 = input.nextInt();
+		System.out.println("Enter length for side 3: ");
+		side3 = input.nextInt();
+		// create an object of the Triangle class
+		RightTriangle triangle = new RightTriangle(side1, side2, side3);
+		//display
+		System.out.println(triangle);
+		input.close();
+
+	}
+
+}
