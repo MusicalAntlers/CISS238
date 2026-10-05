@@ -1,0 +1,145 @@
+/** Assignment 12: Employee Skills
+ * Student: Morgan Williams
+ * Date: September 28, 2026
+ */
+package edu.ccis;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Employee {
+	// fields
+		private String name;
+		private ArrayList<String> skill;
+		// accessors
+		public String getName() {
+			return name;
+		}
+		public ArrayList<String> getSkills() {
+			return skill;
+		}
+		// mutators
+		public void setName(String name) {
+			this.name = name;
+		}
+		public void setSkills(ArrayList<String> skill) {
+			this.skill = skill;
+		}
+		// constructor
+		public Employee(String name, ArrayList<String> skill) {
+			this.name = name;
+			this.skill = skill;
+		}
+		// methods
+		public void addSkill(String skill) {
+			getSkills().add(skill);
+		}
+		public void removeSkill(String skill) {
+			getSkills().remove(skill);
+		}
+		public void sortSkills() {
+			Collections.sort(getSkills());
+		}
+		public int findSkillPosition(String skill) {
+			return getSkills().indexOf(skill) + 1;
+		}
+		public boolean isSkillCompleted(String skill) {
+			return getSkills().contains(skill);
+		}
+		// toString
+		@Override
+		public String toString() {
+			String str;
+			str = String.format("Name: %s%n%d skills%n", getName(),
+										getSkills().size());
+			for(String c:getSkills()) {
+				str += String.format("%s,  ", c);
+			}
+			return str;
+		}
+
+}
+
+
+
+/** Assignment 12: Student Courses
+ * Student: Morgan Williams
+ * Date: September 28, 2026
+ */
+package edu.ccis;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class EmployeeTest {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		// variables
+		String name;
+		String skill;
+		// two skills in an ArrayList
+		ArrayList<String> mySkills = new ArrayList<>();
+		mySkills.add("Java");
+		mySkills.add("UML");
+		// prompt user for input
+		System.out.println("Enter employee name: ");
+		name = input.nextLine();
+		// create an employee with two skills
+		Employee employee = new Employee(name, mySkills);
+		int menuSelected;
+		// display a user menu
+		System.out.println("Enter a number for the task:");
+		System.out.println("1. Add a skill.");
+		System.out.println("2. Drop a skill.");
+		System.out.println("3. Find the position of a skill.");
+		System.out.println("4. Display all skills.");
+		System.out.println("5. Sort skills.");
+		System.out.println("6. Exit.");
+		menuSelected = input.nextInt();
+		input.nextLine();
+		while(menuSelected > 0 && menuSelected < 6) {
+			switch(menuSelected) {
+			case 1:
+				System.out.println("Enter a skill: ");
+				skill = input.nextLine();
+				employee.addSkill(skill);
+				System.out.println("Skill added.");
+			break;
+			case 2:
+				System.out.println("Enter a skill to delete:");
+				skill = input.nextLine();
+				employee.removeSkill(skill);
+				System.out.println("Skill dropped.");
+			break;
+			case 3:
+				System.out.println("Enter a skill to see its position: ");
+				skill = input.nextLine();
+				// check if the skill is in the completed list
+				if(employee.isSkillCompleted(skill)) {
+					System.out.printf("%s is in position %d%n",
+							skill, employee.findSkillPosition(skill));
+				} else {
+					System.out.printf("%s is not completed yet.%n", skill);
+				}
+			break;
+			case 4:
+				System.out.println(employee);
+			break;
+			case 5:
+				employee.sortSkills();
+				System.out.println(employee);
+			}
+		// display a user menu
+			System.out.println("Enter a number for the task:");
+			System.out.println("1. Add a skill.");
+			System.out.println("2. Drop a skill.");
+			System.out.println("3. Find the position of a skill.");
+			System.out.println("4. Display all skills.");
+			System.out.println("5. Sort skills.");
+			System.out.println("6. Exit.");
+					menuSelected = input.nextInt();
+					input.nextLine();
+		}
+		input.close();
+	}
+
+}
