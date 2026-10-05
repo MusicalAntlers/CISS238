@@ -1,0 +1,145 @@
+/** Assignment 12: Student Courses
+ * Student: Morgan Williams
+ * Date: September 28, 2026
+ */
+package edu.ccis;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Student {
+	// fields
+	private String name;
+	private ArrayList<String> courses;
+	// accessors
+	public String getName() {
+		return name;
+	}
+	public ArrayList<String> getCourses() {
+		return courses;
+	}
+	// mutators
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setCourses(ArrayList<String> courses) {
+		this.courses = courses;
+	}
+	// constructor
+	public Student(String name, ArrayList<String> courses) {
+		this.name = name;
+		this.courses = courses;
+	}
+	// methods
+	public void addCourse(String course) {
+		getCourses().add(course);
+	}
+	public void removeCourse(String course) {
+		getCourses().remove(course);
+	}
+	public void sortCourses() {
+		Collections.sort(getCourses());
+	}
+	public int findCoursePosition(String course) {
+		return getCourses().indexOf(course) + 1;
+	}
+	public boolean isCourseCompleted(String course) {
+		return getCourses().contains(course);
+	}
+	// toString
+	@Override
+	public String toString() {
+		String str;
+		str = String.format("Name: %s%n%d courses%n", getName(),
+									getCourses().size());
+		for(String c:getCourses()) {
+			str += String.format("%s,  ", c);
+		}
+		return str;
+	}
+
+}
+
+
+
+/** Assignment 12: Student Courses
+ * Student: Morgan Williams
+ * Date: September 28, 2026
+ */
+package edu.ccis;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class StudentTest {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		// variables
+		String name;
+		String course;
+		// two courses in an ArrayList
+		ArrayList<String> myCourses = new ArrayList<>();
+		myCourses.add("CS 101");
+		myCourses.add("CS 102");
+		// prompt user for input
+		System.out.println("Enter student name: ");
+		name = input.nextLine();
+		// create a student with two courses
+		Student student = new Student(name, myCourses);
+		int menuSelected;
+		// display a user menu
+		System.out.println("Enter a number for the task:");
+		System.out.println("1. Add a course.");
+		System.out.println("2. Drop a course.");
+		System.out.println("3. Find the position of a course.");
+		System.out.println("4. Display all courses.");
+		System.out.println("5. Sort courses.");
+		System.out.println("6. Exit.");
+		menuSelected = input.nextInt();
+		input.nextLine();
+		while(menuSelected > 0 && menuSelected < 6) {
+			switch(menuSelected) {
+			case 1:
+				System.out.println("Enter a course: ");
+				course = input.nextLine();
+				student.addCourse(course);
+				System.out.println("Course added.");
+			break;
+			case 2:
+				System.out.println("Enter a course to delete:");
+				course = input.nextLine();
+				student.removeCourse(course);
+				System.out.println("Course dropped.");
+			break;
+			case 3:
+				System.out.println("Enter a course to see its position: ");
+				course = input.nextLine();
+				// check if the course is in the completed list
+				if(student.isCourseCompleted(course)) {
+					System.out.printf("%s is in position %d%n",
+							course, student.findCoursePosition(course));
+				} else {
+					System.out.printf("%s is not completed yet.%n", course);
+				}
+			break;
+			case 4:
+				System.out.println(student);
+			break;
+			case 5:
+				student.sortCourses();
+				System.out.println(student);
+			}
+		// display a user menu
+			System.out.println("Enter a number for the task:");
+			System.out.println("1. Add a course.");
+			System.out.println("2. Drop a course.");
+			System.out.println("3. Find the position of a course.");
+			System.out.println("4. Display all courses.");
+			System.out.println("5. Sort courses.");
+			System.out.println("6. Exit.");
+					menuSelected = input.nextInt();
+					input.nextLine();
+		}
+		input.close();
+	}
+
+}
