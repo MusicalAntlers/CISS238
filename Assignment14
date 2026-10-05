@@ -1,0 +1,175 @@
+/** Assignment 12: Creating date objects
+ * Student: Morgan Williams
+ * Date: September 28, 2026
+ */
+package edu.ccis;
+
+public class Date2 {
+	// fields
+	private String month;
+	private int day;
+	private int year;
+	// accessors
+	public String getMonth() {
+		return month;
+	}
+	public int getDay() {
+		return day;
+	}
+	public int getYear() {
+		return year;
+	}
+	// mutators
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public void setDay(int day) {
+		this.day = day;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	// constructors
+	public Date2() {
+		month = "January";
+		day = 1;
+		year = 1000;
+	}
+	public Date2(String month, int day, int year) {
+		this.month = month;
+		this.day = day;
+		this.year = year;
+	}
+	public Date2(int month, int day, int year) {
+		this.day = day;
+		this.year = year;
+	switch(month) {
+	case 1:
+		this.month = "January";
+	break;
+	case 2:
+		this.month = "February";
+	break;
+	case 3:
+		this.month = "March";
+	break;
+	case 4:
+		this.month = "April";
+	break;
+	case 5:
+		this.month = "May";
+	break;
+	case 6:
+		this.month = "June";
+	break;
+	case 7:
+		this.month = "July";
+	break;
+	case 8:
+		this.month = "August";
+	break;
+	case 9:
+		this.month = "September";
+	break;
+	case 10:
+		this.month = "October";
+	break;
+	case 11:
+		this.month = "November";
+	break;
+	case 12:
+		this.month = "December";
+	break;
+	}
+}
+public Date2(int year) {
+	this(1, 1, year);
+}
+public Date2(Date2 date2) {
+	this(date2.getMonth(), date2.getDay(), date2.getYear());
+}
+// methods
+public String dateInNumber() {
+	String str;
+	switch(getMonth()) {
+	case "January":
+		str = "1";
+	break;
+	case "February":
+		str = "2";
+	break;
+	case "March":
+		str = "3";
+	break;
+	case "April":
+		str = "4";
+	break;
+	case "May":
+		str = "5";
+	break;
+	case "June":
+		str = "6";
+	break;
+	case "July":
+		str = "7";
+	break;
+	case "August":
+		str = "8";
+	break;
+	case "September":
+		str = "9";
+	break;
+	case "October":
+		str = "10";
+	break;
+	case "November":
+		str = "11";
+	break;
+	case "December":
+		str = "12";
+	break;
+	default:
+		str = "00";
+	break;
+	}
+	str += "/" + getDay() + "/" + getYear();
+	return str;
+}
+public String dateInWord() {
+	String str;
+	str = getMonth() + " " + getDay() + " " + getYear();
+	return str;
+}
+}
+
+
+/** Assignment 12: Creating date objects
+ * Student: Morgan Williams
+ * Date: September 28, 2026
+ */
+package edu.ccis;
+
+public class Date2Test {
+
+	public static void main(String[] args) {
+		// five objects
+		Date2 date2a = new Date2();
+		Date2 date2b = new Date2("August", 12, 1990);
+		Date2 date2c = new Date2(3, 21, 1991);
+		Date2 date2d = new Date2(1992);
+		Date2 date2e = new Date2(date2b);
+		// display each object in two formats
+		System.out.println(date2a.dateInNumber());
+		System.out.println(date2a.dateInWord());
+		System.out.println(date2b.dateInNumber());
+		System.out.println(date2b.dateInWord());
+		System.out.println(date2c.dateInNumber());
+		System.out.println(date2c.dateInWord());
+		System.out.println(date2d.dateInNumber());
+		System.out.println(date2d.dateInWord());
+		System.out.println(date2e.dateInNumber());
+		System.out.println(date2e.dateInWord());
+
+	}
+
+}
